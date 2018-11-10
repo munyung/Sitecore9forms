@@ -1,0 +1,40 @@
+@using Sitecore.ExperienceForms.Mvc.Html
+@model Sitecore.Scientist.Forms.Fields.GoogleRecaptcha
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="g-recaptcha" data-sitekey=@Model.PublicKey data-callback="captchaCallback"></div>
+<span class="field-validation-error" id="captchaError-@Html.IdFor(m => Model.Value)" style="display:none">@Model.ErrorMessage</span>
+<input id="@Html.IdFor(m => Model.Value)" name="@Html.NameFor(m => Model.Value)" class="@Model.CssClass" value="@Model.Value" type="hidden" data-sc-tracking="@Model.IsTrackingEnabled" data-sc-field-name="@Model.Name" @Html.GenerateUnobtrusiveValidationAttributes(m => m.Value) />
+@Html.ValidationMessageFor(m => Model.Value)
+
+<script type="text/javascript">
+    if ($('#'+'@Html.IdFor(m => Model.Value)').parent('form')) {
+        $($('#' + '@Html.IdFor(m => Model.Value)').parent('form')).submit(function () {
+            document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "none";
+            $('span[data-valmsg-for="@Html.NameFor(m => Model.Value)').hide();
+             var recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse.length == 0) {
+            document.getElementById('captchaError-' + '@Html.IdFor(m => Model.Value)').value = $('#' + '@Html.IdFor(m => Model.Value)').data('val-required');
+            document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "block";
+            return false;
+        }
+        else {
+            document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "none";
+            $('#'+'@Html.IdFor(m => Model.Value)').val(recaptchaResponse);
+            return true;
+        }
+        });
+    }
+    function captchaCallback() {
+         document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "none";
+        $('span[data-valmsg-for="@Html.NameFor(m => Model.Value)').hide();
+        if (recaptchaResponse.length == 0) {
+            document.getElementById('captchaError-' + '@Html.IdFor(m => Model.Value)').value = $('#' + '@Html.IdFor(m => Model.Value)').data('val-required');
+            document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "block";
+        }
+        else {
+            document.getElementById('captchaError-'+'@Html.IdFor(m => Model.Value)').style.display = "none";
+            $('#'+'@Html.IdFor(m => Model.Value)').val(recaptchaResponse);
+        }
+    }
+</script>
