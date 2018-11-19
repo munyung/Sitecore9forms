@@ -39,6 +39,18 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.Analytics, Version=11.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Analytics.NoReferences.9.0.180604\lib\NET462\Sitecore.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Model, Version=11.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.Analytics.Model.NoReferences.9.0.180604\lib\NET462\Sitecore.Analytics.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.EmailCampaign.Cd, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.EmailCampaign.Cd.NoReferences.9.0.180604\lib\NET462\Sitecore.EmailCampaign.Cd.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.EmailCampaign.Model, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.EmailCampaign.Model.NoReferences.9.0.180604\lib\NET462\Sitecore.EmailCampaign.Model.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.ExperienceForms, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.ExperienceForms.NoReferences.9.0.180604\lib\NET462\Sitecore.ExperienceForms.dll</HintPath>
     </Reference>
@@ -53,6 +65,18 @@
     </Reference>
     <Reference Include="Sitecore.Mvc, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitecore.Mvc.NoReferences.9.0.180604\lib\NET462\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.NoReferences.9.0.180604\lib\NET462\Sitecore.XConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Client.NoReferences.9.0.180604\lib\NET462\Sitecore.XConnect.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Client.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Client.Configuration.NoReferences.9.0.180604\lib\NET462\Sitecore.XConnect.Client.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.XConnect.Collection.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sitecore.XConnect.Collection.Model.NoReferences.9.0.180604\lib\NET462\Sitecore.XConnect.Collection.Model.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,6 +110,8 @@
   <ItemGroup>
     <Compile Include="Fields\GoogleRecaptcha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubmitActions\SendEmail.cs" />
+    <Compile Include="SubmitActions\UpdateContact.cs" />
     <Compile Include="Validator\CaptchaValidator.cs" />
     <Compile Include="Validator\EmailExistValidator.cs" />
   </ItemGroup>
@@ -96,6 +122,10 @@
     <None Include="packages.config" />
     <None Include="Views\FormBuilder\FieldTemplates\GoogleRecaptcha.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="sitecore\shell\client\Applications\FormsBuilder\Layouts\Actions\Actions.css" />
+    <Content Include="sitecore\shell\client\Applications\FormsBuilder\Layouts\Actions\SendEmail.js" />
+    <Content Include="sitecore\shell\client\Applications\FormsBuilder\Layouts\Actions\UpdateContact.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
